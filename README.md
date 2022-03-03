@@ -79,9 +79,13 @@ Wrapping cloth on user
 References:
 
 [1] https://cloud.google.com/vision
+
 [2] https://pixellib.readthedocs.io/en/latest/ 
+
 [3] Han, X., Wu, Z., Wu, Z., Yu, R., & Davis, L.S. (2018). VITON: An Image-Based Virtual Try-on Network. 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition, 7543-7552.
+
 [4] https://getbootstrap.com/docs/5.1/getting-started/contents/
+
 [5] https://firebase.google.com/docs
 
 
