@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtualTry</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>SearchNDTry</h1>
+        <div class="row">
+            <div class="col-5 mt-5">
+                <form method="POST" enctype="multipart/form-data" action="/tryon">
+                    <h5>Upload Your Image for Virtual try</h5>
+                    <div class="btn-grp">
+                        <input class="form-control" type="file" name="query_img"><br>
+                        <input class="btn btn-secondary" type="submit">
+                    </div>
+                </form>
+                <br><br><br>
+                <form method="POST" action="/capturetry">
+                    <h5>Capture Image</h5>
+                    <div class="btn-group gap-1">
+                        <input class="btn btn-secondary" type="submit" value="Stop/Start" name="stop" />
+                        <input class="btn btn-secondary" type="submit" value="Capture" name="click"/>
+                        <input class="btn btn-secondary" type="submit" value="UseImage" name="use"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-5">
+                <img src="/video_feed" class="border border-2 rounded">
+            </div>
+        </div>
+
+        <br><br>
+            {% if uploaded_img_path %}
+            <h2>Uploaded Image</h2>
+            <img src="{{ uploaded_img_path }}" width="300px" class="img-thumbnail">
+            {% endif %}
+        <br><br>
+            {% if final_img_path %}
+            <h2>Final Image</h2>
+            <img src="{{ final_img_path }}" width="300px" class="img-thumbnail">
+            {% endif %}
+        
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART</title>
+</head>
+<body>
+    <h2>Cart</h2>
+    {% for key, value in imgs.items() %}
+        <img src="{{ value }}" height="200" width="300" alt="">
+        <form action="/virtualtry" method="post"> 
+            <!-- <a href="/virtualtry"><button class="fadeIn fourth">Virtual Try</button></a> -->
+            <button type="submit" name="imgUrl" value="{{ value }}">Virtual Try</button>
+        </form>
+        <form action="/cartremove" method="post">
+            <button type="submit" name="remove" value="{{ key }}">Remove from Cart</button>
+        </form>
+    {% endfor %}
+</body>
+</html>

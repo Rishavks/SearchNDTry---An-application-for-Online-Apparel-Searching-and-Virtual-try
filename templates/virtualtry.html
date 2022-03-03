@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SearchNDTry - Search</title>
+
+    <!-- Favicons -->
+    <link href="../static/img/favicon.png" rel="icon">
+    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/css/lib/aos/aos.css" rel="stylesheet">
+    <link href="../static/css/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/css/lib/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../static/css/lib/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../static/css/lib/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: BizLand - v3.6.0
+    * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+    <style>
+
+        
+        html {
+            transition: color 300ms, background-color 300ms;
+        }
+
+        html[data-theme='dark'] {
+            background: #000;
+            filter: invert(1) hue-rotate(180deg)
+        }
+
+        html[data-theme='dark'] img {
+        filter: invert(1) hue-rotate(180deg)
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ======= Header ======= --> 
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="/welcome">SearchNDTry<span>.</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
+        <nav id="navbar" class="navbar">
+            <ul>
+            <li><a class="nav-link scrollto " href="/welcome">Home</a></li>
+            <li><a class="nav-link scrollto" href="/index">Search</a></li>
+            <li><a class="nav-link scrollto" href="/cart">Cart</a></li>
+            <li><a href="/">Log Out</a></li>
+            <li>
+                <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-primary" onclick="toggleTheme('dark');">Dark</button>
+                <button type="button" class="btn btn-outline-primary" onclick="toggleTheme('light');">Light</button>
+                </div>
+            </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>VirtualTry Apparels</h2>
+            <ol>
+            <li><a href="/welcome">Home</a></li>
+            <li><a href="">VirtualTry</a></li>
+            </ol>
+        </div>
+
+        </div>
+    </section><!-- Breadcrumbs Section -->
+
+    <div class="container">
+      <!-- <h1>SearchNDTry</h1> -->
+      <div class="row">
+          <div class="col-5 mt-5">
+              <form method="POST" enctype="multipart/form-data" action="/tryon">
+                  <h5>Upload Your Image for Virtual try</h5>
+                  <div class="btn-grp">
+                      <input class="form-control" type="file" name="query_img"><br>
+                      <input class="btn btn-outline-primary" type="submit">
+                  </div>
+              </form>
+              <br><br><br>
+              <form method="POST" action="/capturetry">
+                  <h5>Capture Image</h5>
+                  <div class="btn-group">
+                      <input class="btn btn-outline-primary" type="submit" value="Stop/Start" name="stop" />
+                      <input class="btn btn-outline-primary" type="submit" value="Capture" name="click"/>
+                      <input class="btn btn-outline-primary" type="submit" value="UseImage" name="use"/>
+                  </div>
+              </form>
+          </div>
+
+          <div class="col-5">
+              <br>
+              <img src="/video_feed" class="border border-2 rounded">
+          </div>
+      </div>
+
+      <br>
+      {% if uploaded_img_path %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            <div class="col mb-4">
+                <div class="card">
+                    <img src="{{ uploaded_img_path }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Uploaded Image</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+      {% endif %}
+
+      {% if final_img_path %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            <div class="col mb-4">
+                <div class="card">
+                    <a href="/temp" target="_blank">
+                        <img src="{{ final_img_path }}" class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Final Image</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+      {% endif %}
+      
+    </div>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+                <h3>SearchNDTry<span>.</span></h3>
+                <p>
+                A108 Adam Street <br>
+                New York, NY 535022<br>
+                United States <br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Social Networks</h4>
+                <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        </div>
+
+        <div class="container py-4">
+            <div class="copyright">
+                &copy; Copyright <strong><span>SearchNDTry</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <!-- <div id="preloader"></div>  -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <script>
+        const htmlEl = document.getElementsByTagName('html')[0];
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+        if (currentTheme) {
+            htmlEl.dataset.theme = currentTheme;
+        }
+
+        const toggleTheme = (theme) => {
+            htmlEl.dataset.theme = theme;
+            localStorage.setItem('theme', theme);
+        }
+    </script>
+
+    <!-- Vendor JS Files -->
+    <script src="../static/css/lib/aos/aos.js"></script>
+    <script src="../static/css/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/css/lib/glightbox/js/glightbox.min.js"></script>
+    <script src="../static/css/lib/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../static/css/lib/php-email-form/validate.js"></script>
+    <script src="../static/css/lib/purecounter/purecounter.js"></script>
+    <script src="../static/css/lib/swiper/swiper-bundle.min.js"></script>
+    <script src="../static/css/lib/waypoints/noframework.waypoints.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../static/js/main.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script> -->
+
+</body>
+</html>
